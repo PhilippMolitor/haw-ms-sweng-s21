@@ -10,6 +10,7 @@ export const AppPage: VFC<AppPageProps> = (): JSX.Element => {
   return (
     <div>
       AppPage
+      <Link to={url}>Close Accounts</Link>
       <Link to={`${url}/account/abc`}>Open Account abc</Link>
       <Link to={`${url}/account/xyz`}>Open Account xyz</Link>
       <Route
