@@ -1,5 +1,8 @@
 # HAW Media Systems Software Engineering (SoSe 2021)
 
+[![codecov](https://codecov.io/gh/PhilippMolitor/haw-ms-sweng-s21/branch/dev/graph/badge.svg?token=dAOlb2R87B)](https://codecov.io/gh/PhilippMolitor/haw-ms-sweng-s21)
+[![continous integration](https://github.com/PhilippMolitor/haw-ms-sweng-s21/actions/workflows/ci-dev.yaml/badge.svg?branch=dev)](https://github.com/PhilippMolitor/haw-ms-sweng-s21/actions/workflows/ci-dev.yaml)
+
 ## Getting started
 
 ### VS Code Settings
