@@ -1,0 +1,43 @@
+name: continous integration
+
+on:
+  push:
+    branches: ['dev']
+  pull_request:
+    branches: ['dev']
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      # preparation
+      - name: checkout
+        uses: actions/checkout@v2
+
+      - name: install node
+        uses: actions/setup-node@v1
+        with:
+          node-version: 14.x
+
+      # dependencies
+      - name: cache node_modules
+        uses: actions/cache@v2
+        with:
+          path: '**/node_modules'
+          key: ${{ runner.os }}-node14-modules-${{ hashFiles('**/yarn.lock') }}
+
+      - name: install dependencies
+        run: yarn --frozen-lockfile
+
+      # unit tests
+      - name: execute unit tests
+        run: yarn tests:ci
+
+      - name: generate codecov report
+        uses: codecov/codecov-action@v1
+        with:
+          fail_ci_if_error: true
+
+      # see if the project is able to build
+      - name: build the project
+        run: yarn build

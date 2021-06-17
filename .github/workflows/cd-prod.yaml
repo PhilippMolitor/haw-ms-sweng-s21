@@ -1,0 +1,43 @@
+name: deployment
+
+on:
+  push:
+    branches: ['master']
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 2
+
+      - name: install node
+        uses: actions/setup-node@v1
+        with:
+          node-version: 14.x
+
+      - name: install dependencies
+        run: yarn --frozen-lockfile
+
+      - name: cache node_modules
+        uses: actions/cache@v2
+        with:
+          path: '**/node_modules'
+          key: ${{ runner.os }}-node14-modules-${{ hashFiles('**/yarn.lock') }}
+
+      - name: build app
+        run: yarn build
+
+      - name: add git-ftp-include file
+        run: echo '!build/' > ./.git-ftp-include
+
+      - name: deploy to test server
+        uses: SamKirkland/FTP-Deploy-Action@3.1.1
+        with:
+          ftp-server: ${{ secrets.SFTP_URL }}
+          ftp-username: ${{ secrets.SFTP_USERNAME }}
+          ftp-password: ${{ secrets.SFTP_PASSWORD }}
+          local-dir: build/
+          git-ftp-args: --insecure
