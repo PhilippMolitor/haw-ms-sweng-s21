@@ -3,6 +3,8 @@ import { Redirect } from 'react-router-dom';
 import { ScaleLoader } from 'react-spinners';
 import styled from 'styled-components';
 
+import { ReactComponent as OKFLogo } from '../assets/images/okf-logo.svg';
+
 const SplashPageWrapper = styled.div`
   display: flex;
   flex-direction: column;
@@ -18,9 +20,14 @@ const SplashPageWrapper = styled.div`
 const LogoStack = styled.div`
   display: flex;
   flex-direction: column;
+  align-items: center;
   gap: 0.4rem;
 
   width: 80vw;
+
+  .logo {
+    width: 8rem;
+  }
 
   > h1 {
     font-size: 3rem;
@@ -63,7 +70,7 @@ export const SplashPage: VFC<SplashPageProps> = (): JSX.Element => {
   return (
     <SplashPageWrapper>
       <LogoStack>
-        <img src="" alt="" />
+        <OKFLogo className="logo" />
         <h1>OKFINANCE</h1>
       </LogoStack>
 
