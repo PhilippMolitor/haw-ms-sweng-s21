@@ -12,9 +12,11 @@
     "tests:ci": "react-scripts test --watchAll=false --coverage --verbose"
   },
   "jest": {
-    "snapshotSerializers": ["enzyme-to-json/serializer"],
+    "snapshotSerializers": [
+      "enzyme-to-json/serializer"
+    ],
     "collectCoverageFrom": [
-      "src/**/*.ts", 
+      "src/**/*.ts",
       "src/**/*.tsx",
       "!src/index.tsx",
       "!src/setupTests.ts",
@@ -63,6 +65,7 @@
     "react-dom": "^16.14.0",
     "react-router-dom": "^5.2.0",
     "react-scripts": "4.0.3",
+    "react-spinners": "^0.11.0",
     "react-test-renderer": "^17.0.2",
     "styled-components": "^5.3.0",
     "typescript": "^4.3.2",
