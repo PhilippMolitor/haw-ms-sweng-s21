@@ -1,9 +1,20 @@
 import React, { FC, useState } from 'react';
+import styled from 'styled-components';
 
 export interface PinProps {
   btnText: string;
   onVerify(pin: string): void;
 }
+
+const Button = styled.button`
+  cursor: pointer;
+  justify-content: center;
+  background: #002b2d;
+  color: #fff;
+  font-size: 1rem;
+  font-family: 'Poppins', sans-serif;
+`;
+
 // Issue for Prop-Validation: https://github.com/yannickcr/eslint-plugin-react/issues/2353
 
 export const PinInput: FC<PinProps> = ({ btnText, onVerify }: PinProps) => {
@@ -30,7 +41,7 @@ export const PinInput: FC<PinProps> = ({ btnText, onVerify }: PinProps) => {
 
   return (
     <form>
-      <div>
+      <div className="verificationWrapper">
         <input
           type="number"
           value={pin}
@@ -38,9 +49,9 @@ export const PinInput: FC<PinProps> = ({ btnText, onVerify }: PinProps) => {
         />
       </div>
       <div>
-        <button type="submit" onClick={onSubmit}>
+        <Button type="submit" onClick={onSubmit}>
           {btnText}
-        </button>
+        </Button>
       </div>
     </form>
   );

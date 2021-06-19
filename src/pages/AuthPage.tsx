@@ -11,7 +11,6 @@ export type AuthPageProps = {};
 const AuthPageWrapper = styled.div`
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
   align-items: center;
   width: 100vw;
   height: 100vh;
@@ -25,11 +24,11 @@ const LogoStack = styled.div`
   flex-direction: column;
   align-items: center;
   gap: 0.4rem;
-
+  padding-top: 70px;
   width: 80vw;
 
   .logo {
-    width: 8rem;
+    width: 3rem;
   }
 `;
 
@@ -38,8 +37,8 @@ const IntroBody = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 0.5rem;
-
+  gap: 0.75rem;
+  padding-top: 30px;
   width: 80vw;
 
   text-align: center;
@@ -49,6 +48,10 @@ const IntroBody = styled.div`
 
   > h2 {
     font-size: 1.7rem;
+    color: #121025;
+  }
+  > p {
+    font-family: ${({ theme }) => theme.fonts.body};
   }
 `;
 
@@ -74,7 +77,7 @@ export const AuthPage: VFC<AuthPageProps> = (): JSX.Element => {
       </LogoStack>
       <IntroBody>
         <h2>Verification</h2>
-        Please enter your pin
+        <p>Please enter your pin</p>
       </IntroBody>
       <PinInput btnText="Verify" onVerify={addPin} />
     </AuthPageWrapper>
