@@ -8,12 +8,6 @@ import { useAuthStore } from '../stores/auth';
 
 export type AuthPageProps = {};
 
-// Pin componente einbinden
-// Function für das submitten aus der Pin-Komponente
-//    --> Diese muss an die Komponente gepassed werden
-//  Was soll in dieser Funktion passieren?
-// Eigentlich erstmal das, was momentan noch über den Button-Click passiert + redirect zu richtiger Seite
-
 const AuthPageWrapper = styled.div`
   display: flex;
   flex-direction: column;

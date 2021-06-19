@@ -1,18 +1,5 @@
 import React, { FC, useState } from 'react';
 
-// What we need:
-
-// Input form (X)
-// Submit Button (X)
-// useState definieren --> verknüpfen mit input
-// OnSubmit Function erstellen und an form höngen
-//    Die soll die useState Function aufrufen um den Input zu setzen
-//    Definiert, was zurück an den Parent gegeben wird
-//    Anschließend input auf leer
-
-// Allert: OnSubmit aber Input leer --> Pinlänge abfragen: wenn < 4 = Alert
-//         Spöter: Wenn falscher Pin eingegeben
-
 export interface PinProps {
   btnText: string;
   onVerify(pin: string): void;
