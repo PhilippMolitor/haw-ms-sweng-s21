@@ -12,11 +12,15 @@ const AuthPageWrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: flex-start;
+  align-content: start;
   width: 100vw;
   height: 100vh;
   overflow: none;
   color: #ffffff;
   background: #fff;
+  gap: 2rem;
+  margin-top: 48px;
 `;
 
 const LogoStack = styled.div`
@@ -24,7 +28,6 @@ const LogoStack = styled.div`
   flex-direction: column;
   align-items: center;
   gap: 0.4rem;
-  padding-top: 70px;
   width: 80vw;
 
   .logo {
@@ -37,8 +40,7 @@ const IntroBody = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 0.75rem;
-  padding-top: 30px;
+  gap: 0.5rem;
   width: 80vw;
 
   text-align: center;
@@ -47,11 +49,13 @@ const IntroBody = styled.div`
   color: #000;
 
   > h2 {
-    font-size: 1.7rem;
+    font-size: 24px;
     color: #121025;
+    font-weight: 300;
   }
   > p {
-    font-family: ${({ theme }) => theme.fonts.body};
+    font-size: 13px;
+    font-weight: 100;
   }
 `;
 

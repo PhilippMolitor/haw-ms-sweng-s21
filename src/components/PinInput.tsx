@@ -7,13 +7,42 @@ export interface PinProps {
   onVerify(pin: string): void;
 }
 
+const VerifyForm = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1.75rem;
+  background: #fafafa;
+  border-radius: 10px;
+  width: 80vw;
+  height: 140px;
+`;
+
 const Button = styled.button`
   cursor: pointer;
+  width: 80%;
+  min-width: 100%
+  padding-top: 6px !important;
+  padding-bottom: 6px;
+  border: none;
+  border-radius: 12px;
+  flex-shrink: 1;
   justify-content: center;
   background: #002b2d;
   color: #fff;
   font-size: 1rem;
   font-family: 'Poppins', sans-serif;
+`;
+
+const Input = styled.input`
+  border: none;
+  border-bottom: 1px solid #000;
+  outline: none;
+  background: #fafafa;
+  font-family: sans-serif;
+  width: 80%;
+  text-align: center;
 `;
 
 // Issue for Prop-Validation: https://github.com/yannickcr/eslint-plugin-react/issues/2353
@@ -41,19 +70,15 @@ export const PinInput: FC<PinProps> = ({ btnText, onVerify }: PinProps) => {
   };
 
   return (
-    <form>
-      <div className="verificationWrapper">
-        <input
-          type="number"
-          value={pin}
-          onChange={(e) => setPin(e.target.value)}
-        />
-      </div>
-      <div>
-        <Button type="submit" onClick={onSubmit}>
-          {btnText}
-        </Button>
-      </div>
-    </form>
+    <VerifyForm>
+      <Input
+        type="number"
+        value={pin}
+        onChange={(e) => setPin(e.target.value)}
+      />
+      <Button type="submit" onClick={onSubmit}>
+        {btnText}
+      </Button>
+    </VerifyForm>
   );
 };
