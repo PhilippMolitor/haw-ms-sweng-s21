@@ -15,16 +15,22 @@ const VerifyForm = styled.div`
   gap: 1.75rem;
   background: #fafafa;
   border-radius: 10px;
-  width: 80vw;
-  height: 140px;
+
+  @media only screen and (max-device-width: 450px) {
+    width: 80vw;
+    height: 140px;
+  }
+
+  @media (min-device-width: 451px) {
+    width: 300px;
+    height: 140px;
+  }
 `;
 
 const Button = styled.button`
   cursor: pointer;
   width: 80%;
-  min-width: 100%
-  padding-top: 6px !important;
-  padding-bottom: 6px;
+  height: 40px;
   border: none;
   border-radius: 12px;
   flex-shrink: 1;
@@ -32,7 +38,9 @@ const Button = styled.button`
   background: #002b2d;
   color: #fff;
   font-size: 1rem;
+  font-weight: 200;
   font-family: 'Poppins', sans-serif;
+  padding: 6px;
 `;
 
 const Input = styled.input`
