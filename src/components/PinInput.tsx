@@ -118,12 +118,6 @@ export const PinInput: FC<PinProps> = ({ btnText, onVerify }: PinProps) => {
           <p className="subtitle">Überprüfen Sie ihre Eingabe.</p>
         </Alert>
       )}
-      {noEnteredPin && (
-        <Alert>
-          <p>Flascher Pin</p>
-          <p className="subtitle">Bitte versuchen Sie es erneut.</p>
-        </Alert>
-      )}
       <Button type="submit" onClick={onSubmit}>
         {btnText}
       </Button>
