@@ -1,5 +1,6 @@
 import create from 'zustand';
 
+// boolean state only
 export type BlurStore = {
   isBlurred: boolean;
   setBlurred: (blurred: boolean) => void;
