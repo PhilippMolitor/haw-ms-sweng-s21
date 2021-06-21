@@ -16,7 +16,7 @@ const AppHeaderWrapper = styled.div`
   align-items: center;
   justify-content: space-between;
 
-  padding: 1.3rem;
+  padding: 2rem;
   width: 100%;
   height: 2.4rem;
 `;
