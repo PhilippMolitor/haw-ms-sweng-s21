@@ -26,7 +26,9 @@ export type AccountStore = {
 };
 
 export const useAccounts = create<AccountStore>((set) => ({
-  accounts: JSON.parse(window.localStorage.getItem('accounts') || '[]') || [],
+  accounts:
+    JSON.parse(window.localStorage.getItem('accounts') || '{accounts: []}')
+      .accounts || [],
   // add an account to the array
   addAccount: (name: string) => {
     const account: Account = {
