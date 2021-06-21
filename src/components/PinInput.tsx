@@ -88,7 +88,7 @@ export const PinInput: FC<PinProps> = ({ btnText, onVerify }: PinProps) => {
       setPin('');
       return;
     }
-    if (pin.length === 4) {
+    if (pin.length !== 4) {
       setNoEnteredPin(false);
       setPinLengthError(true);
       setPin('');
