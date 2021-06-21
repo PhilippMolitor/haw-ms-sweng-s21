@@ -38,7 +38,9 @@ export const AccountOverviewPage: VFC<AccountOverviewPageProps> =
         </div>
 
         {accounts.map((a) => (
-          <Link to={`${url}/account/${a.id}`}>{a.name}</Link>
+          <Link key={a.id} to={`${url}/account/${a.id}`}>
+            {a.name}
+          </Link>
         ))}
       </div>
     );
