@@ -1,0 +1,67 @@
+import { v4 } from 'uuid';
+import create from 'zustand';
+
+export type AccountTransaction = {
+  id: string;
+  amount: number;
+  description: string | null;
+  category: string | null;
+};
+
+export type Account = {
+  id: string;
+  name: string;
+  transactions: AccountTransaction[];
+};
+
+export type AccountStore = {
+  accounts: Account[];
+  addAccount: (name: string) => Account;
+  addTransaction: (
+    accountId: string,
+    amount: number,
+    description: string | null,
+    category: string | null
+  ) => AccountTransaction;
+};
+
+export const useAccounts = create<AccountStore>((set) => ({
+  accounts: JSON.parse(window.localStorage.getItem('accounts') || '[]') || [],
+  // add an account to the array
+  addAccount: (name: string) => {
+    const account: Account = {
+      id: v4(),
+      name,
+      transactions: [],
+    };
+    set((prev) => ({ accounts: [...prev.accounts, account] }));
+    return account;
+  },
+  // add a transaction to an account and return it
+  addTransaction: (
+    accountId: string,
+    amount: number,
+    description: string | null,
+    category: string | null
+  ) => {
+    const transaction: AccountTransaction = {
+      id: v4(),
+      amount,
+      description,
+      category,
+    };
+
+    // append to the transactions sub-array of the correct account
+    set((prev) => {
+      const acc = prev.accounts.filter((a) => a.id === accountId)[0]!;
+      return {
+        accounts: [
+          ...prev.accounts.filter((a) => a.id !== accountId),
+          { ...acc, transactions: [...acc.transactions, transaction] },
+        ],
+      };
+    });
+
+    return transaction;
+  },
+}));
