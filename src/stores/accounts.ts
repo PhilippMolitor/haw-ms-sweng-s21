@@ -26,7 +26,9 @@ export type AccountStore = {
 };
 
 export const useAccounts = create<AccountStore>((set) => ({
-  accounts: JSON.parse(window.localStorage.getItem('accounts') || '[]') || [],
+  accounts:
+    JSON.parse(window.localStorage.getItem('accounts') || '{accounts: []}')
+      .accounts || [],
   // add an account to the array
   addAccount: (name: string) => {
     const account: Account = {
@@ -34,7 +36,11 @@ export const useAccounts = create<AccountStore>((set) => ({
       name,
       transactions: [],
     };
-    set((prev) => ({ accounts: [...prev.accounts, account] }));
+    set((prev) => {
+      const data = { accounts: [...prev.accounts, account] };
+      window.localStorage.setItem('accounts', JSON.stringify(data));
+      return data;
+    });
     return account;
   },
   // add a transaction to an account and return it
@@ -54,12 +60,14 @@ export const useAccounts = create<AccountStore>((set) => ({
     // append to the transactions sub-array of the correct account
     set((prev) => {
       const acc = prev.accounts.filter((a) => a.id === accountId)[0]!;
-      return {
+      const data = {
         accounts: [
           ...prev.accounts.filter((a) => a.id !== accountId),
           { ...acc, transactions: [...acc.transactions, transaction] },
         ],
       };
+      window.localStorage.setItem('accounts', JSON.stringify(data));
+      return data;
     });
 
     return transaction;
