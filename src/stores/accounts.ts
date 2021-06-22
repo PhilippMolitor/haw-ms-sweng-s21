@@ -27,13 +27,14 @@ export type AccountStore = {
 
 function getInitialAccountState(): Account[] {
   const data = window.localStorage.getItem('accounts');
+
   if (!data || data === '') {
     return [];
   }
 
   try {
     const parsedData = JSON.parse(data);
-    return parsedData.account as Account[];
+    return parsedData.accounts as Account[];
   } catch {
     return [];
   }
