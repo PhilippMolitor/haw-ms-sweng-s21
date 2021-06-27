@@ -1,3 +1,4 @@
+import { render, screen } from '@testing-library/react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter } from 'react-router-dom';
 
@@ -15,5 +16,12 @@ describe('<AuthPage>', () => {
       </Theme>,
       div
     );
+  });
+});
+
+describe('<AuthPage>', () => {
+  it('displays verify button', () => {
+    render(<AuthPage />);
+    expect(screen.getByText('Verify')).toBeInTheDocument();
   });
 });
