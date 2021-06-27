@@ -109,7 +109,7 @@ const TransactionBox = styled.div`
   .cat {
     font-weight: 100;
     font-size: 10px;
-    text-color: #002b2d;
+    color: #002b2d;
   }
 `;
 
