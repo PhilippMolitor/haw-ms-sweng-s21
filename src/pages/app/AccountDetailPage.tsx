@@ -24,6 +24,14 @@ const ContentWrapper = styled.div`
   height: 100vh;
 `;
 
+const Amount = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 18px 24px;
+  width: 100vw;
+`;
+
 const Input = styled.div`
   display: flex;
   flex-direction: column;
@@ -94,6 +102,7 @@ const SecondCol = styled.div`
 
 const TransactionBox = styled.div`
   display: flex;
+  flex: 1;
   flex-direction: column;
   padding: 12px;
   border: 2px solid;
@@ -109,7 +118,7 @@ const TransactionBox = styled.div`
   .cat {
     font-weight: 100;
     font-size: 10px;
-    text-color: #002b2d;
+    color: #002b2d;
   }
 `;
 
@@ -139,6 +148,15 @@ export const AccountDetailPage: VFC<AccountDetailPageProps> =
     return (
       <AccountDetailPageWrapper>
         <AppHeader title={account.name} backUrl="/app" />
+        <Amount>
+          <span>Gesamt: </span>
+          <BlurrableText>
+            €
+            {account.transactions
+              .map((t) => t.amount)
+              .reduce((total, current) => total + current, 0)}
+          </BlurrableText>
+        </Amount>
         <ContentWrapper>
           <TransactionDisplay>
             {account.transactions.map((t) => (
