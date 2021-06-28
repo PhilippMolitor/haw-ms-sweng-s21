@@ -99,7 +99,16 @@ export const AccountOverviewPage: VFC<AccountOverviewPageProps> =
           <AccountDisplay>
             <Amount>
               <span>Gesamt: </span>
-              <BlurrableText>€1.000.000</BlurrableText>
+              <BlurrableText>
+                €
+                {accounts
+                  .map((a) =>
+                    a.transactions
+                      .map((t) => t.amount)
+                      .reduce((total, current) => total + current, 0)
+                  )
+                  .reduce((total, current) => total + current, 0)}
+              </BlurrableText>
             </Amount>
             <AccountList>
               {accounts.map((a) => (

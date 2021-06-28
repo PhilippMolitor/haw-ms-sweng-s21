@@ -25,10 +25,23 @@ export type AccountStore = {
   ) => AccountTransaction;
 };
 
+function getInitialAccountState(): Account[] {
+  const data = window.localStorage.getItem('accounts');
+
+  if (!data || data === '') {
+    return [];
+  }
+
+  try {
+    const parsedData = JSON.parse(data);
+    return parsedData.accounts as Account[];
+  } catch {
+    return [];
+  }
+}
+
 export const useAccounts = create<AccountStore>((set) => ({
-  accounts:
-    JSON.parse(window.localStorage.getItem('accounts') || '{accounts: []}')
-      .accounts || [],
+  accounts: getInitialAccountState(),
   // add an account to the array
   addAccount: (name: string) => {
     const account: Account = {
