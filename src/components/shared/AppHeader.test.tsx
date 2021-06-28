@@ -1,15 +1,14 @@
 import ReactDOM from 'react-dom';
-import { BrowserRouter } from 'react-router-dom';
 
 import { Theme } from '../../utils/Theme';
-import { TransactionDetailPage } from './TransactionDetailPage';
+import { AppHeader } from './AppHeader';
 
-describe('<TransactionDetailPage>', () => {
+describe('<AppHeader>', () => {
   it('renders without errors', () => {
     const div = document.createElement('div');
     ReactDOM.render(
       <Theme>
-        <TransactionDetailPage />
+        <AppHeader title="Unit Test" />
       </Theme>,
       div
     );
